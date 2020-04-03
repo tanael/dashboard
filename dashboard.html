@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myDashboard">
+  <head>
+    <meta charset="utf-8">
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/underscore/underscore.js"></script>
+    <script type="text/javascript" src="dashboard.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+  </head>
+
+  <body>
+    <h2>My Dashboard</h2>
+    <div ng-controller="DashboardCtrl">
+      <h3>Total todos: {{ getTotalTodos() }}</h3>
+      <ul class="unstyled">
+	<li ng-repeat="todo in todos">
+	  <input type="checkbox" ng-model="todo.done">
+	  <span class="done-{{todo.done}}">{{todo.text}}</span>
+	</li>
+      </ul>
+      <form class="form-horizontal">
+	<input type="text" ng-model="formTodoText" ng-model-instant>
+	<button class="btn" ng-click="addTodo()"><i></i>Add</button>
+      </form>
+
+      <button class="btn-large" ng-click="clearCompleted()"><i></i>Clear</button>
+    </div>
+  </body>
+</html>
